@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Docking Footer Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* The Core Logic */
+        .content-container {
+            position: relative;
+            /* Height of the container must be larger than viewport to see effect */
+            min-height: 120vh; 
+        }
+
+        .docking-footer {
+            /* 1. Stick to the bottom of the viewport */
+            position: sticky;
+            bottom: 0;
+            
+            /* 2. Style & Transition */
+            z-index: 50;
+            transition: all 0.3s ease;
+        }
+
+        /* Optional: Add a subtle shadow when it's "floating" vs "docked" */
+        /* We can use an Intersection Observer to toggle a class when it reaches the end */
+        .is-docked {
+            box-shadow: none !important;
+            border-top-color: transparent !important;
+        }
+
+        /* Spacer to allow scrolling before/after */
+        .spacer {
+            height: 120vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f3f4f6;
+            color: #9ca3af;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans">
+
+    <div class="spacer text-xl">
+        Scroll down to see the content block...
+    </div>
+
+    <!-- The Parent Content Block -->
+    <main class="max-w-4xl mx-auto bg-white border-x border-gray-200 content-container flex flex-col">
+        
+        <!-- Main Content -->
+        <div class="p-8 md:p-12 flex-grow">
+            <h1 class="text-4xl font-bold mb-6 text-indigo-600">The Dynamic Content Block</h1>
+            
+            <div class="space-y-6 text-lg leading-relaxed text-gray-700">
+                <p>
+                    This is a long content block. As soon as the top of this white area enters your screen, 
+                    notice the footer at the bottom. It isn't at the very bottom of the page yet; 
+                    it's "stuck" to your viewport.
+                </p>
+                <div class="bg-indigo-50 p-6 rounded-xl border-l-4 border-indigo-500">
+                    <p class="font-medium text-indigo-800">
+                        Try scrolling slowly. The footer remains visible, overlaying this text, 
+                        until you reach the actual end of this specific white container.
+                    </p>
+                </div>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+                <p>
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+                <!-- Repetitive content to ensure scrolling -->
+                <p>
+                    More content to fill the space... Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                    Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, 
+                    est eros bibendum elit, nec luctus magna felis sollicitudin mauris.
+                </p>
+                 <p>
+                    Almost at the end... Notice how the footer is still floating. 
+                    Once the "Natural End" marker below hits the bottom of your screen, 
+                    the footer will stop moving and stay put.
+                </p>
+                <div class="h-40 flex items-center justify-center border-2 border-dashed border-gray-200 rounded-lg">
+                    <span class="text-gray-400 uppercase tracking-widest text-sm">Natural End of Content</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- The Docking Footer -->
+        <!-- It must be a direct child of the container for the sticky behavior to work correctly -->
+        <footer id="footer" class="docking-footer bg-white border-t border-gray-200 p-6 shadow-[0_-10px_25px_-5px_rgba(0,0,0,0.1)]">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div>
+                    <h3 class="font-bold text-gray-900">Sticky Action Footer</h3>
+                    <p class="text-sm text-gray-500">This bar "docks" when you reach the end of the section.</p>
+                </div>
+                <div class="flex gap-3">
+                    <button class="px-6 py-2 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors">
+                        Subscribe
+                    </button>
+                    <button class="px-6 py-2 border border-gray-300 rounded-lg font-medium hover:bg-gray-50 transition-colors">
+                        Dismiss
+                    </button>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <div class="spacer text-xl">
+        The footer is now "docked" above and stayed behind.
+    </div>
+
+    <script>
+        // Optional: Adding a visual indicator when docked
+        const footer = document.getElementById('footer');
+        const container = document.querySelector('.content-container');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // When the container's bottom is in view, we consider it "near docking"
+                // But specifically, we want to know if the footer is at the bottom of its parent.
+                // A simpler way for a demo is checking if the bottom of the container is visible.
+                if (entry.isIntersecting && entry.intersectionRatio >= 0.99) {
+                    footer.classList.add('is-docked');
+                } else {
+                    footer.classList.remove('is-docked');
+                }
+            });
+        }, {
+            threshold: [0, 1.0]
+        });
+
+        // We observe a sentinel or just the container
+        // To be precise, you'd usually place a 1px div at the very bottom of the container.
+    </script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+.instagram-success-page {
+    --primary: #9d50bb;
+    --secondary: #6e48aa; /* Violet/Purple gradient base */
+    --accent: #ff007a;
+    --bg-dark: #0f0c29;
+    --text-light: #f0f0f0;
+    --glass: rgba(255, 255, 255, 0.05);
+    
+    background: linear-gradient(135deg, var(--bg-dark), #302b63, #24243e);
+    color: var(--text-light);
+    padding-bottom: 5em;
+}
+
+.instagram-success-page .hero {
+    padding: 6em 2em;
+    text-align: center;
+    background: radial-gradient(circle at top right, rgba(157, 80, 187, 0.2), transparent);
+}
+
+.instagram-success-page h1 {
+    font-size: 3.5em;
+    margin-bottom: 0.2em;
+    background: linear-gradient(to right, #fff, var(--primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.instagram-success-page .lead {
+    font-size: 1.25em;
+    opacity: 0.8;
+    max-width: 40em;
+    margin: 0 auto 2em;
+}
+
+.instagram-success-page .badges {
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.instagram-success-page .badge {
+    background: var(--glass);
+    padding: 0.4em 1.2em;
+    border-radius: 2em;
+    font-size: 0.9em;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.instagram-success-page section {
+    padding: 4em 2em;
+    max-width: 80em;
+    margin: 0 auto;
+}
+
+.instagram-success-page .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18em, 1fr));
+    gap: 2em;
+}
+
+.instagram-success-page .card {
+    background: var(--glass);
+    padding: 2em;
+    border-radius: 1.5em;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.instagram-success-page .card:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+}
+
+.instagram-success-page .strategy-card .material-symbols-outlined {
+    font-size: 2.5em;
+    color: var(--primary);
+    margin-bottom: 0.5em;
+}
+
+.instagram-success-page .strategy-card h3 {
+    margin-bottom: 0.8em;
+    color: #fff;
+}
+
+.instagram-success-page .sources-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+}
+
+.instagram-success-page .source-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.instagram-success-page .source-link {
+    font-size: 0.8em;
+    color: var(--primary);
+    text-decoration: none;
+    padding: 0.3em 1em;
+    border: 1px solid var(--primary);
+    border-radius: 2em;
+    transition: all 0.2s ease;
+}
+
+.instagram-success-page .source-link:hover {
+    background: var(--primary);
+    color: #fff;
+}
+
+.instagram-success-page .checklist-card {
+    background: linear-gradient(135deg, rgba(80, 0, 150, 0.2), rgba(150, 0, 100, 0.2));
+    border: 1px solid rgba(255, 100, 200, 0.2);
+}
+
+.instagram-success-page .checklist {
+    list-style: none;
+    padding: 0;
+    margin-top: 2em;
+}
+
+.instagram-success-page .checklist li {
+    padding: 1em 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+}
+
+.instagram-success-page .checklist li::before {
+    content: '✓';
+    color: var(--accent);
+    margin-right: 1em;
+    font-weight: bold;
+}
+
+@media (max-width: 48em) {
+    .instagram-success-page h1 {
+        font-size: 2.5em;
+    }
+}

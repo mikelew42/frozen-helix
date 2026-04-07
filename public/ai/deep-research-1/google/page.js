@@ -1,4 +1,4 @@
-import app, { div, h1, h2, p, section, ul, li, a, View } from "/app.js";
+import app, { div, h1, h2, p, section, ul, li, a, View, span } from "/app.js";
 
 View.stylesheet("/ai/styles.css");
 
@@ -13,7 +13,7 @@ section.c("details", () => {
     div.c("card pad mb", () => {
         h2("Source & Details");
         p(() => {
-            app.span("Official URL: ");
+            span("Official URL: ");
             a("blog.google/technology/ai/google-gemini-deep-research/").href("https://blog.google/technology/ai/google-gemini-deep-research/").attr("target", "_blank");
         });
         

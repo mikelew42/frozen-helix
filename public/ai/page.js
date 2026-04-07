@@ -15,10 +15,12 @@ section.c("hero", () => {
 section.c("projects", () => {
     h2("AI Projects");
     div.c("icon-grid", () => {
+        new GridNavItem({ name: "trending_up", label: "Instagram Success", path: "/ai/instagram-success/" });
         new GridNavItem({ name: "layers", label: "Icon Layouts", path: "/ai/icon-layouts/" });
         new GridNavItem({ name: "explore", label: "Navigation Explorer", path: "/ai/navigation-explorer/" });
         new GridNavItem({ name: "image", label: "Image Exploration", path: "/ai/image-exploration/" });
         new GridNavItem({ name: "search", label: "Deep Research", path: "/ai/deep-research/" });
+        new GridNavItem({ name: "article", label: "Markdown Renderer", path: "/ai/markdown-renderer/" });
     });
 });
 

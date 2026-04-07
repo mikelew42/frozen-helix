@@ -7,56 +7,56 @@
 			"full": "ai",
 			"children": [
 				{
-					"name": "deep-research",
+					"name": "deep-research-1",
 					"path": "ai",
 					"type": "dir",
-					"full": "ai/deep-research",
+					"full": "ai/deep-research-1",
 					"children": [
 						{
 							"name": "google",
-							"path": "ai/deep-research",
+							"path": "ai/deep-research-1",
 							"type": "dir",
-							"full": "ai/deep-research/google",
+							"full": "ai/deep-research-1/google",
 							"children": [
 								{
 									"name": "page.js",
-									"path": "ai/deep-research/google",
+									"path": "ai/deep-research-1/google",
 									"type": "file",
-									"full": "ai/deep-research/google/page.js"
+									"full": "ai/deep-research-1/google/page.js"
 								}
 							]
 						},
 						{
 							"name": "openai",
-							"path": "ai/deep-research",
+							"path": "ai/deep-research-1",
 							"type": "dir",
-							"full": "ai/deep-research/openai",
+							"full": "ai/deep-research-1/openai",
 							"children": [
 								{
 									"name": "page.js",
-									"path": "ai/deep-research/openai",
+									"path": "ai/deep-research-1/openai",
 									"type": "file",
-									"full": "ai/deep-research/openai/page.js"
+									"full": "ai/deep-research-1/openai/page.js"
 								}
 							]
 						},
 						{
 							"name": "page.js",
-							"path": "ai/deep-research",
+							"path": "ai/deep-research-1",
 							"type": "file",
-							"full": "ai/deep-research/page.js"
+							"full": "ai/deep-research-1/page.js"
 						},
 						{
 							"name": "perplexity",
-							"path": "ai/deep-research",
+							"path": "ai/deep-research-1",
 							"type": "dir",
-							"full": "ai/deep-research/perplexity",
+							"full": "ai/deep-research-1/perplexity",
 							"children": [
 								{
 									"name": "page.js",
-									"path": "ai/deep-research/perplexity",
+									"path": "ai/deep-research-1/perplexity",
 									"type": "file",
-									"full": "ai/deep-research/perplexity/page.js"
+									"full": "ai/deep-research-1/perplexity/page.js"
 								}
 							]
 						}
@@ -123,6 +123,26 @@
 							"path": "ai/image-exploration",
 							"type": "file",
 							"full": "ai/image-exploration/styles.css"
+						}
+					]
+				},
+				{
+					"name": "instagram-success-1",
+					"path": "ai",
+					"type": "dir",
+					"full": "ai/instagram-success-1",
+					"children": [
+						{
+							"name": "page.js",
+							"path": "ai/instagram-success-1",
+							"type": "file",
+							"full": "ai/instagram-success-1/page.js"
+						},
+						{
+							"name": "styles.css",
+							"path": "ai/instagram-success-1",
+							"type": "file",
+							"full": "ai/instagram-success-1/styles.css"
 						}
 					]
 				},
@@ -1391,6 +1411,32 @@
 							]
 						},
 						{
+							"name": "Markdown",
+							"path": "framework/ext",
+							"type": "dir",
+							"full": "framework/ext/Markdown",
+							"children": [
+								{
+									"name": "example.md",
+									"path": "framework/ext/Markdown",
+									"type": "file",
+									"full": "framework/ext/Markdown/example.md"
+								},
+								{
+									"name": "Markdown.js",
+									"path": "framework/ext/Markdown",
+									"type": "file",
+									"full": "framework/ext/Markdown/Markdown.js"
+								},
+								{
+									"name": "page.js",
+									"path": "framework/ext/Markdown",
+									"type": "file",
+									"full": "framework/ext/Markdown/page.js"
+								}
+							]
+						},
+						{
 							"name": "Module",
 							"path": "framework/ext",
 							"type": "dir",
@@ -2369,6 +2415,18 @@
 					]
 				},
 				{
+					"name": "sticky-footer-2.html",
+					"path": "test",
+					"type": "file",
+					"full": "test/sticky-footer-2.html"
+				},
+				{
+					"name": "sticky-footer.html",
+					"path": "test",
+					"type": "file",
+					"full": "test/sticky-footer.html"
+				},
+				{
 					"name": "sub.page.js",
 					"path": "test",
 					"type": "file",
@@ -2417,6 +2475,12 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "_redirects",
+			"path": "./",
+			"type": "file",
+			"full": "_redirects"
 		}
 	]
 }

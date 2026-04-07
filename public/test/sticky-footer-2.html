@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Docking Footer Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .content-container {
+            position: relative;
+            min-height: 150vh; 
+        }
+
+        /* This is the "Trigger Zone". 
+           The sticky footer lives inside here. 
+           Because this starts 400px down, the footer won't 
+           start sticking until you've scrolled 400px into the parent.
+        */
+        .sticky-wrapper {
+            position: absolute;
+            top: 400px; /* Buffer: The header won't be covered immediately */
+            bottom: 0;
+            left: 0;
+            right: 0;
+            pointer-events: none; /* Let clicks pass through the transparent wrapper */
+        }
+
+        .docking-footer {
+            position: sticky;
+            bottom: 0;
+            z-index: 50;
+            pointer-events: auto; /* Re-enable clicks for the footer itself */
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        /* Spacer to allow scrolling before/after */
+        .spacer {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f3f4f6;
+            color: #9ca3af;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 font-sans">
+
+    <div class="spacer text-xl">
+        Scroll down to see the delay...
+    </div>
+
+    <!-- The Parent Content Block -->
+    <main class="max-w-4xl mx-auto bg-white border-x border-gray-200 content-container flex flex-col">
+        
+        <!-- Main Content -->
+        <div class="p-8 md:p-12">
+            <h1 class="text-4xl font-bold mb-6 text-indigo-600">The Dynamic Content Block</h1>
+            
+            <div class="space-y-6 text-lg leading-relaxed text-gray-700">
+                <p class="font-bold text-xl text-gray-900">
+                    Notice: The footer is NOT visible yet.
+                </p>
+                <p>
+                    We've added a 400px "Safe Zone" at the top of this block. You can read this first section 
+                    without any overlays blocking your view.
+                </p>
+                <div class="bg-amber-50 p-6 rounded-xl border-l-4 border-amber-500">
+                    <p class="font-medium text-amber-800">
+                        Keep scrolling. Once the top of the container is 400px past the top of your 
+                        viewport, the footer will slide up and start sticking.
+                    </p>
+                </div>
+                
+                <!-- Extra content to push the end further down -->
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque nec quam sit amet semsagittis tincidunt.</p>
+                <p>Nulla facilisi. Mauris eu enim non vilit lacinia rhoncus. Quisque vulputate, lorem non interdum porta, ante enim varius erat.</p>
+                <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+                <p>More filler content... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur pretium tincidunt lacus. Nulla gravida orci a odio.</p>
+                
+                <div class="h-40 flex items-center justify-center border-2 border-dashed border-gray-200 rounded-lg">
+                    <span class="text-gray-400 uppercase tracking-widest text-sm">Natural End of Content</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- The Wrapper Strategy -->
+        <div class="sticky-wrapper">
+            <footer id="footer" class="docking-footer bg-white border-t border-gray-200 p-6 shadow-[0_-10px_25px_-5px_rgba(0,0,0,0.1)]">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                    <div>
+                        <h3 class="font-bold text-gray-900">Delayed Sticky Footer</h3>
+                        <p class="text-sm text-gray-500">I only appeared after you scrolled 400px.</p>
+                    </div>
+                    <div class="flex gap-3">
+                        <button class="px-6 py-2 bg-indigo-600 text-white rounded-lg font-medium hover:bg-indigo-700 transition-colors">
+                            Got it
+                        </button>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+    </main>
+
+    <div class="spacer text-xl">
+        The footer docked and stayed behind.
+    </div>
+
+</body>
+</html>
