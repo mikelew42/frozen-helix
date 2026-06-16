@@ -4,7 +4,9 @@
       "Bash(git add *)",
       "Bash(git commit -m ' *)",
       "Bash(git push *)",
-      "WebFetch(domain:playground-framework-site.mike-0fb.workers.dev)"
+      "WebFetch(domain:playground-framework-site.mike-0fb.workers.dev)",
+      "Bash(git commit *)",
+      "Bash(git rev-list *)"
     ]
   }
 }
