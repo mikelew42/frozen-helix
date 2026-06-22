@@ -1,12 +1,15 @@
 {
   "permissions": {
+    "defaultMode": "bypassPermissions",
     "allow": [
       "Bash(git add *)",
       "Bash(git commit -m ' *)",
       "Bash(git push *)",
       "WebFetch(domain:playground-framework-site.mike-0fb.workers.dev)",
       "Bash(git commit *)",
-      "Bash(git rev-list *)"
+      "Bash(git rev-list *)",
+      "Bash(grep -rn '$root\\\\|\\\\.app\\\\b' public/app.js)",
+      "Skill(update-config)"
     ]
   }
 }

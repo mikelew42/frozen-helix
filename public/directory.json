@@ -215,6 +215,12 @@
 			]
 		},
 		{
+			"name": "chotahtml.html",
+			"path": "./",
+			"type": "file",
+			"full": "chotahtml.html"
+		},
+		{
 			"name": "directory.json",
 			"path": "./",
 			"type": "file",
@@ -292,6 +298,12 @@
 									"path": "framework/core/App",
 									"type": "file",
 									"full": "framework/core/App/page.js"
+								},
+								{
+									"name": "ViteApp.js",
+									"path": "framework/core/App",
+									"type": "file",
+									"full": "framework/core/App/ViteApp.js"
 								}
 							]
 						},
@@ -1841,6 +1853,126 @@
 					"full": "framework/framework.css"
 				},
 				{
+					"name": "game",
+					"path": "framework",
+					"type": "dir",
+					"full": "framework/game",
+					"children": [
+						{
+							"name": "Camera",
+							"path": "framework/game",
+							"type": "dir",
+							"full": "framework/game/Camera",
+							"children": [
+								{
+									"name": "Camera.js",
+									"path": "framework/game/Camera",
+									"type": "file",
+									"full": "framework/game/Camera/Camera.js"
+								},
+								{
+									"name": "FollowCamera.js",
+									"path": "framework/game/Camera",
+									"type": "file",
+									"full": "framework/game/Camera/FollowCamera.js"
+								},
+								{
+									"name": "OrbitCamera.js",
+									"path": "framework/game/Camera",
+									"type": "file",
+									"full": "framework/game/Camera/OrbitCamera.js"
+								}
+							]
+						},
+						{
+							"name": "Controller",
+							"path": "framework/game",
+							"type": "dir",
+							"full": "framework/game/Controller",
+							"children": [
+								{
+									"name": "Controller.js",
+									"path": "framework/game/Controller",
+									"type": "file",
+									"full": "framework/game/Controller/Controller.js"
+								},
+								{
+									"name": "Controller.test.js",
+									"path": "framework/game/Controller",
+									"type": "file",
+									"full": "framework/game/Controller/Controller.test.js"
+								}
+							]
+						},
+						{
+							"name": "Game",
+							"path": "framework/game",
+							"type": "dir",
+							"full": "framework/game/Game",
+							"children": [
+								{
+									"name": "Game.js",
+									"path": "framework/game/Game",
+									"type": "file",
+									"full": "framework/game/Game/Game.js"
+								},
+								{
+									"name": "Game.test.js",
+									"path": "framework/game/Game",
+									"type": "file",
+									"full": "framework/game/Game/Game.test.js"
+								},
+								{
+									"name": "page.js",
+									"path": "framework/game/Game",
+									"type": "file",
+									"full": "framework/game/Game/page.js"
+								},
+								{
+									"name": "tests",
+									"path": "framework/game/Game",
+									"type": "dir",
+									"full": "framework/game/Game/tests",
+									"children": [
+										{
+											"name": "page.js",
+											"path": "framework/game/Game/tests",
+											"type": "file",
+											"full": "framework/game/Game/tests/page.js"
+										}
+									]
+								},
+								{
+									"name": "tests.page.js",
+									"path": "framework/game/Game",
+									"type": "file",
+									"full": "framework/game/Game/tests.page.js"
+								}
+							]
+						},
+						{
+							"name": "Player",
+							"path": "framework/game",
+							"type": "dir",
+							"full": "framework/game/Player",
+							"children": [
+								{
+									"name": "Player.js",
+									"path": "framework/game/Player",
+									"type": "file",
+									"full": "framework/game/Player/Player.js"
+								},
+								{
+									"name": "Player.test.js",
+									"path": "framework/game/Player",
+									"type": "file",
+									"full": "framework/game/Player/Player.test.js"
+								}
+							]
+						}
+					]
+				},
+				{
 					"name": "lib",
 					"path": "framework",
 					"type": "dir",
@@ -2203,12 +2335,6 @@
 					]
 				}
 			]
-		},
-		{
-			"name": "html.html",
-			"path": "./",
-			"type": "file",
-			"full": "html.html"
 		},
 		{
 			"name": "index.html",
