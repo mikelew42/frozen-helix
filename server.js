@@ -1,18 +1,10 @@
 import Server from "./Server/Server.js";
 import Directory from "./Server/plugins/Directory.js";
-
-import SocketServer from "./Server/plugins/SocketServer/SocketServer.js";
-import LiveReload from "./Server/plugins/SocketServer/LiveReload.js";
+import DevSocket from "./Server/plugins/DevSocket/DevSocket.js";
 import Runtime from "./Server/plugins/SocketServer/Runtime.js";
 
-
-SocketServer.on("new", () => {
-	console.log("New socket server");
-});
-SocketServer.use(LiveReload);
-SocketServer.Socket.use(Runtime);
-
-Server.use(SocketServer);
+DevSocket.Socket.use(Runtime);
+Server.use(DevSocket);
 Server.use(Directory);
 
 new Server();
