@@ -252,6 +252,12 @@
 					"full": "framework/.git"
 				},
 				{
+					"name": ".gitattributes",
+					"path": "framework",
+					"type": "file",
+					"full": "framework/.gitattributes"
+				},
+				{
 					"name": "core",
 					"path": "framework",
 					"type": "dir",
@@ -342,6 +348,92 @@
 							]
 						},
 						{
+							"name": "Item",
+							"path": "framework/core",
+							"type": "dir",
+							"full": "framework/core/Item",
+							"children": [
+								{
+									"name": "0",
+									"path": "framework/core/Item",
+									"type": "dir",
+									"full": "framework/core/Item/0",
+									"children": [
+										{
+											"name": "Item0.js",
+											"path": "framework/core/Item/0",
+											"type": "file",
+											"full": "framework/core/Item/0/Item0.js"
+										},
+										{
+											"name": "Item0.test.js",
+											"path": "framework/core/Item/0",
+											"type": "file",
+											"full": "framework/core/Item/0/Item0.test.js"
+										},
+										{
+											"name": "page.js",
+											"path": "framework/core/Item/0",
+											"type": "file",
+											"full": "framework/core/Item/0/page.js"
+										}
+									]
+								},
+								{
+									"name": "readme.md",
+									"path": "framework/core/Item",
+									"type": "file",
+									"full": "framework/core/Item/readme.md"
+								}
+							]
+						},
+						{
+							"name": "List",
+							"path": "framework/core",
+							"type": "dir",
+							"full": "framework/core/List",
+							"children": [
+								{
+									"name": "0",
+									"path": "framework/core/List",
+									"type": "dir",
+									"full": "framework/core/List/0",
+									"children": [
+										{
+											"name": "List.css",
+											"path": "framework/core/List/0",
+											"type": "file",
+											"full": "framework/core/List/0/List.css"
+										},
+										{
+											"name": "List0.js",
+											"path": "framework/core/List/0",
+											"type": "file",
+											"full": "framework/core/List/0/List0.js"
+										},
+										{
+											"name": "List0.View.js",
+											"path": "framework/core/List/0",
+											"type": "file",
+											"full": "framework/core/List/0/List0.View.js"
+										},
+										{
+											"name": "page.js",
+											"path": "framework/core/List/0",
+											"type": "file",
+											"full": "framework/core/List/0/page.js"
+										}
+									]
+								},
+								{
+									"name": "readme.md",
+									"path": "framework/core/List",
+									"type": "file",
+									"full": "framework/core/List/readme.md"
+								}
+							]
+						},
+						{
 							"name": "Page",
 							"path": "framework/core",
 							"type": "dir",
@@ -374,10 +466,42 @@
 							"full": "framework/core/Test",
 							"children": [
 								{
+									"name": "0",
+									"path": "framework/core/Test",
+									"type": "dir",
+									"full": "framework/core/Test/0",
+									"children": [
+										{
+											"name": "page.js",
+											"path": "framework/core/Test/0",
+											"type": "file",
+											"full": "framework/core/Test/0/page.js"
+										},
+										{
+											"name": "Test0.js",
+											"path": "framework/core/Test/0",
+											"type": "file",
+											"full": "framework/core/Test/0/Test0.js"
+										}
+									]
+								},
+								{
+									"name": "ai-test-runner.md",
+									"path": "framework/core/Test",
+									"type": "file",
+									"full": "framework/core/Test/ai-test-runner.md"
+								},
+								{
 									"name": "page.js",
 									"path": "framework/core/Test",
 									"type": "file",
 									"full": "framework/core/Test/page.js"
+								},
+								{
+									"name": "readme.md",
+									"path": "framework/core/Test",
+									"type": "file",
+									"full": "framework/core/Test/readme.md"
 								},
 								{
 									"name": "Test.css",
@@ -1877,6 +2001,12 @@
 									"full": "framework/game/Camera/FollowCamera.js"
 								},
 								{
+									"name": "HybridCamera.js",
+									"path": "framework/game/Camera",
+									"type": "file",
+									"full": "framework/game/Camera/HybridCamera.js"
+								},
+								{
 									"name": "OrbitCamera.js",
 									"path": "framework/game/Camera",
 									"type": "file",
@@ -1967,6 +2097,18 @@
 									"path": "framework/game/Player",
 									"type": "file",
 									"full": "framework/game/Player/Player.test.js"
+								},
+								{
+									"name": "Soldier.js",
+									"path": "framework/game/Player",
+									"type": "file",
+									"full": "framework/game/Player/Soldier.js"
+								},
+								{
+									"name": "YBot.js",
+									"path": "framework/game/Player",
+									"type": "file",
+									"full": "framework/game/Player/YBot.js"
 								}
 							]
 						}

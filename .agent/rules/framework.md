@@ -11,6 +11,8 @@ CORE DESIGN PHILOSOPHY
 ----------------------
 The framework is a minimalist, reactive-inspired library that prioritizes a declarative UI building experience using a Captor Pattern. It automates page routing and ensures resources (styles and fonts) are loaded before rendering.
 
+Must use `../../relative/path.js` relative imports in order to work on a GitHub CDN. 
+
 CORE CLASSES
 ------------
 

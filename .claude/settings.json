@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "WebFetch(domain:playground-framework-site.mike-0fb.workers.dev)",
+      "Bash(git commit *)",
+      "Bash(git rev-list *)",
+      "Bash(grep -rn '$root\\\\|\\\\.app\\\\b' public/app.js)",
+      "Skill(update-config)",
+      "Bash(node -e ' *)",
+      "Bash(mv \"c:/Code/frozen-helix/.claude/settings.local.json\" \"c:/Code/frozen-helix/.claude/settings.json\")"
+    ],
+    "defaultMode": "bypassPermissions",
+    "additionalDirectories": [
+      "c:\\Code\\frozen-helix\\.claude"
+    ]
+  }
+}
