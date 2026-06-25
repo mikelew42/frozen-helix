@@ -73,6 +73,8 @@ div.c("sidebar", () => {
 el.c("button", "primary large", "Save");
 ```
 
+Note, `el(...).c("class-name")` does NOT work.  View does not have a `c()` method.  The `el.c(tag, class, ...content)` and `div.c(class, ...content)` are only for these helper creator functions, not actual methods.
+
 ---
 
 ## Chaining API

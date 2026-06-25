@@ -87,13 +87,33 @@ This pattern applies to all framework modules: `Component/0/`, `File/0/`, `List/
 ```
 frozen-helix/
   Server/              ← Node server (git submodule)
+  scripts/             ← Node tooling (ESM loader, test runner, browser stubs)
+    loader.mjs         ← maps /framework/... to public/framework/...
+    register.mjs       ← loads the loader via module.register()
+    run-all.mjs        ← runs all *.test.js under public/framework/
+    stubs/             ← App.js, View.js, Socket.js, localStorage.js for Node tests
   public/
     framework/         ← framework (git submodule)
-      core/            ← fundamental primitives (View, App, Events, Item, ...)
-      ext/             ← extensions built on core (Socket, Directory, List, ...)
+      core/            ← fundamental primitives
+        Item/          ← Item0–Item9 + Item.js (→ Item9)
+        List/          ← List0–List8 + List.js (→ List8)
+        Test/          ← Test0, Test1
+        View/          ← DOM abstraction
+        App/           ← App singleton
+        Events/        ← on/off/emit base class
+      ext/             ← extensions built on core
+        File/          ← FileSaver (WebSocket RPC)
+        CollectionSaver/ ← Persist whole List to one JSON file
+        MemorySaver/   ← In-memory saver for tests
+        LocalStorageSaver/ ← browser localStorage
+        Store/         ← Named Item registry (Store.item(name) → FileSaver-backed Item9)
+        Notes/         ← NoteItem + NoteList demo
+        Todo/          ← TodoItem + TodoList demo
+        Socket/        ← WebSocket singleton
+        Directory/     ← filesystem listing nav
       lib/             ← pure utilities (util.js, is.js)
       dum/             ← DOM utility layer
-    app.js             ← single entry point, re-exports everything
+    app.js             ← single entry point, exports everything including Item/List/Store/Savers
     directory.json     ← auto-generated filesystem listing
   persistence.md       ← early design doc: Saver, backends, delta model
   persistence2.md      ← later design doc: Item/ORM, dirty tracking, delta shape
@@ -108,7 +128,18 @@ The old system used `File` + `Component` (see `ext/File/`, `ext/Component/`). Th
 
 The new system replaces `Component` with `Item`. The migration is additive: old Component code stays, new Item code is written fresh in `core/Item/`.
 
-**Current phase:** Item0 (in-memory get/set/dirty/save with injected saver). No file I/O yet.
+**Current phase:** Item0–Item9 and List0–List8 fully implemented with Node test suites. Savers: FileSaver (per-item), CollectionSaver (whole List → one file), LocalStorageSaver, MemorySaver — all with Node tests. Test0 (Node-runnable) and Test1 (browser renderer via View) both implemented. Demo apps: ext/Todo/, ext/Notes/. Higher-level: ext/Store/ (named Item registry). **26 suites, 26/26 passing. 21/21 Playwright browser tests passing.**
+
+- `core/Item/Item.js` → Item9 (checkpoint/undo/redo)
+- `core/List/List.js` → List8 (index_by: O(1) lookup)
+- All `.test.js` files are Node-runnable via `node scripts/run-all.mjs` (26/26 passing)
+- `Test1.View` renders test suites in the browser with collapsible `<details>/<summary>` — passed suites collapse by default; all page.js files use it
+- `tests/browser/framework.spec.js` — 21 Playwright tests, one per framework page; run with `npx playwright test`
+- `framework/page.js` — summary/index page with full Item/List/Saver/module reference tables
+
+**Item progression:** Item0 (get/set) → Item1 (async load/save) → Item2 (children) → Item3 (jspath/delta) → Item4 (reactive List children) → Item5 (reactive set() events) → Item6 (once/save events/batch) → Item7 (computed fields) → Item8 (schema/type coercion) → Item9 (checkpoint/undo/redo)
+
+**List progression:** List0 (traversal/parent) → List1 (add/remove events) → List2 (derived/filtered lists) → List3 (sorted derived) → List4 (reactive transform) → List5 (reactive filter via Item5 change events) → List6 (group_by / group_by_reactive) → List7 (sort_reactive) → List8 (index_by: O(1) lookup Map)
 
 ---
 
@@ -121,5 +152,13 @@ The new system replaces `Component` with `Item`. The migration is additive: old 
 - **`app.js`** is the single import entry point for pages: `import app, { el, div, h1, test } from "/app.js"`.
 - **Constructor args via Object.assign** — the standard constructor pattern is `constructor(...args){ this.assign(...args) }` where `assign` does `Object.assign(this, ...args)`. This means `new Foo({ key: val })` works for any named property, in any order, all optional. Prefer this over positional arguments or custom destructuring. Subclasses call `super(...args)` and add their own defaults before or after.
 - **Class-attached test suites** — test suites live on the class they test: `Item0.test = new Test0({ class: Item0 })`. The `.test.js` file (e.g. `Item0.test.js`) sets this up and re-exports the class. Higher levels import the lower class from its `.test.js` file to get the suite attached: `import Item0 from "../0/Item0.test.js"`. Then `Item1.test.add(Item0.test)` inherits the full contract.
-- **Run node tests after edits** — after editing a class that has a `.test.js` file, run it: `node public/framework/core/Item/0/Item0.test.js`. This is the primary feedback loop for pure-logic classes. Exit 0 = all passed; failures print to stdout with ✓/✗ per assertion. Do this before reporting a change as working. If no `.test.js` exists yet, note it as a gap.
+- **Run node tests after edits** — after editing a class that has a `.test.js` file, run it: `node --import ./scripts/register.mjs public/framework/core/Item/0/Item0.test.js`. The `register.mjs` loader maps `/framework/...` imports and stubs browser-only modules (App, View). Exit 0 = all passed; failures print to stdout with ✓/✗ per assertion. Do this before reporting a change as working. If no `.test.js` exists yet, note it as a gap.
 - **`readme.md` per module** — every module folder (`core/Foo/`, `ext/Bar/`) should have a `readme.md` design doc. When working in a module, check for its readme and update it: record decisions made, clear up questions that got answered, note new open questions, and add direction when a conversation leads somewhere. Keep readmes living documents, not snapshots.
+- **Node-only guard in `.test.js` files** — do NOT use `import { fileURLToPath } from 'url'` at the top level (browser page.js files import test files and this crashes them). Use this pattern at the bottom instead:
+  ```js
+  if (typeof process !== 'undefined' && process.argv[1] === (await import('url')).fileURLToPath(import.meta.url)) {
+      await suite.run();
+      suite.print();
+  }
+  ```
+  The `&&` short-circuits in the browser so `import('url')` is never evaluated.
